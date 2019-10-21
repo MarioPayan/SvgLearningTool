@@ -8,10 +8,6 @@ type cardProps = {
 };
 
 export default class SvgCard extends React.Component<cardProps> {
-  constructor(props: cardProps) {
-    super(props);
-  }
-
   state = {
     svg: this.props.svg,
   };
