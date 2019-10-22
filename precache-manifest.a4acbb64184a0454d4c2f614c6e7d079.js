@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5ce2f2de4e9d5c234628e5fd58f4fb44",
+    "revision": "dd164a9374f1320a0fb92a38cbe92e70",
     "url": "/SvgLearningTool/index.html"
   },
   {
