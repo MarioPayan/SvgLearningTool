@@ -20,43 +20,61 @@ export default class SvgCard extends React.Component<cardProps> {
     }
   };
 
-  getHtml = (): string => {
-    let html = '';
+  getHtmlCode = (): string => {
+    let props = '';
     let tag = '';
+    let content = '';
     Object.keys(this.state.svg).map((key: string) => {
       if (key === 'tag') {
         tag = (this.state.svg as any)[key];
+      } else if (key === 'text') {
+        content = (this.state.svg as any)[key];
       } else {
         const value = (this.state.svg as any)[key];
         if (value) {
           const prop = key.replace(/([A-Z])/g, '-$1').toLowerCase();
-          html = ` ${html} ${prop}=${value}`;
+          props = ` ${props} ${prop}="${value}"`;
         }
       }
     });
-    html = `<${tag} ${html}></${tag}>`;
-    return html;
+    return `<${tag} ${props}>${content}</${tag}>`;
+  };
+
+  getDocLink = (name: string): string => {
+    const url = 'https://developer.mozilla.org/en-US/docs/Web/SVG';
+    let docLink = '';
+    if (name === 'tag') {
+      docLink = `${url}/Element/${(this.state.svg as any)[name]}`;
+    } else {
+      const formattedName = name.replace(/([A-Z])/g, '-$1').toLowerCase();
+      docLink = `${url}/Attribute/${formattedName}`;
+    }
+    return docLink;
   };
 
   render = (): JSX.Element => {
     return (
-      <CardGroup>
+      <CardGroup style={{width: '38rem', padding: '1rem'}}>
         <Card style={{width: '18rem'}}>
           <Card.Header>{this.props.header}</Card.Header>
           <Card.Body style={{padding: '0rem'}}>
             <svg width='18rem' height='9rem'>
-              {React.createElement(this.props.svg.tag, this.props.svg)}
+              {React.createElement(this.props.svg.tag, this.props.svg, this.props.svg.text)}
             </svg>
           </Card.Body>
           <Card.Footer className='text-muted overflow-auto' style={{height: '5rem', padding: '0rem'}}>
-            <code>{this.getHtml()}</code>
+            <code>{this.getHtmlCode()}</code>
           </Card.Footer>
         </Card>
         <Card bg='light' className='overflow-auto' style={{padding: '1rem', height: '18rem'}}>
           {Object.keys(this.state.svg).map(key => (
             <InputGroup className='mb-2'>
               <InputGroup.Prepend>
-                <InputGroup.Text>{key}</InputGroup.Text>
+                <InputGroup.Text>
+                  <a href={this.getDocLink(key)} target='_blank' rel='noopener noreferrer'>
+                    {key}
+                  </a>
+                </InputGroup.Text>
               </InputGroup.Prepend>
               <FormControl
                 disabled={key === 'tag'}

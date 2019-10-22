@@ -1,17 +1,37 @@
-import {circle, rectangle, figure} from './objects';
+import * as objects from './objects';
 
 export type example = {
   header: string;
-  svg: figure;
+  svg: objects.figure;
 };
 
 export default [
   {
     header: 'Circle',
-    svg: circle,
+    svg: objects.circle,
   },
   {
     header: 'Rectangle',
-    svg: rectangle,
+    svg: objects.rectangle,
+  },
+  {
+    header: 'Ellipse',
+    svg: objects.ellipse,
+  },
+  {
+    header: 'Line',
+    svg: objects.line,
+  },
+  {
+    header: 'Polygon',
+    svg: objects.polygon,
+  },
+  {
+    header: 'Polyline',
+    svg: objects.polyline,
+  },
+  {
+    header: 'Text',
+    svg: objects.text,
   },
 ];
