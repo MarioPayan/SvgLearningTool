@@ -1,4 +1,14 @@
-export type figure = {
+export type animation = {
+  tag: string;
+  attributeName: string;
+  type?: string;
+  from?: string;
+  to?: string;
+  dur?: string;
+  repeatCount?: string;
+};
+
+export type shape = {
   tag: string;
   width?: string;
   height?: string;
@@ -14,9 +24,7 @@ export type figure = {
   ry?: string;
   cx?: string;
   cy?: string;
-
   text?: string;
-
   clipPath?: string;
   clipRule?: string;
   color?: string;
@@ -43,10 +51,38 @@ export type figure = {
   transform?: string;
   vectorEffect?: string;
   visibility?: string;
+  animations: animation[];
 };
 
-export const circle: figure = {
+const animate: animation = {
+  tag: 'animate',
+  attributeName: '',
+  from: '',
+  to: '',
+  dur: '5s',
+  repeatCount: 'indefinite',
+};
+
+const animateTransform: animation = {
+  tag: 'animateTransform',
+  attributeName: '',
+  type: '',
+  from: '',
+  to: '',
+  dur: '5s',
+  repeatCount: 'indefinite',
+};
+
+const animations = [
+  Object.assign({}, animate),
+  Object.assign({}, animate),
+  Object.assign({}, animateTransform),
+  Object.assign({}, animateTransform),
+];
+
+export const circle: shape = {
   tag: 'circle',
+  animations: Array.from(animations),
   cx: '135',
   cy: '70',
   r: '50',
@@ -55,8 +91,9 @@ export const circle: figure = {
   strokeWidth: '4',
 };
 
-export const rectangle: figure = {
+export const rectangle: shape = {
   tag: 'rect',
+  animations: Array.from(animations),
   x: '88',
   y: '20',
   rx: '20',
@@ -70,8 +107,9 @@ export const rectangle: figure = {
   strokeOpacity: '0.9',
 };
 
-export const line: figure = {
+export const line: shape = {
   tag: 'line',
+  animations: Array.from(animations),
   x1: '40',
   x2: '210',
   y1: '40',
@@ -81,8 +119,9 @@ export const line: figure = {
   strokeOpacity: '0.9',
 };
 
-export const ellipse: figure = {
+export const ellipse: shape = {
   tag: 'ellipse',
+  animations: Array.from(animations),
   cx: '135',
   cy: '70',
   rx: '100',
@@ -94,8 +133,9 @@ export const ellipse: figure = {
   strokeOpacity: '0.2',
 };
 
-export const polygon: figure = {
+export const polygon: shape = {
   tag: 'polygon',
+  animations: Array.from(animations),
   points: '130,0 70,141 220,51 40,51 190,141',
   stroke: 'black',
   strokeWidth: '2',
@@ -104,8 +144,9 @@ export const polygon: figure = {
   fillRule: 'evenodd',
 };
 
-export const polyline: figure = {
+export const polyline: shape = {
   tag: 'polyline',
+  animations: Array.from(animations),
   points: '5,5 20,5 20,45 75,45 75,130 150,130 150,45 250,20',
   stroke: 'orange',
   strokeWidth: '4',
@@ -114,31 +155,12 @@ export const polyline: figure = {
   fillRule: '',
 };
 
-export const text: figure = {
+export const text: shape = {
   tag: 'text',
+  animations: Array.from(animations),
   text: 'Sample text',
   x: '100',
   y: '10',
   fill: 'red',
   transform: 'rotate(30 20,40)',
-};
-
-export const stuff2: figure = {
-  tag: 'stuff',
-};
-
-export const stuff3: figure = {
-  tag: 'stuff',
-};
-
-export const stuff4: figure = {
-  tag: 'stuff',
-};
-
-export const stuff5: figure = {
-  tag: 'stuff',
-};
-
-export const stuff6: figure = {
-  tag: 'stuff',
 };

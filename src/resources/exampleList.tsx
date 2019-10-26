@@ -2,7 +2,7 @@ import * as objects from './objects';
 
 export type example = {
   header: string;
-  svg: objects.figure;
+  svg: objects.shape;
 };
 
 export default [
