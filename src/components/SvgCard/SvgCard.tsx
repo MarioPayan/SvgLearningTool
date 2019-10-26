@@ -14,7 +14,10 @@ export default class SvgCard extends React.Component<cardProps> {
 
   docURL = 'https://developer.mozilla.org/en-US/docs/Web/SVG';
 
-  handleChangeSvg = (e: React.ChangeEvent<HTMLInputElement>, key: string): void => {
+  handleChangeSvg = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    key: string
+  ): void => {
     if (e && e.target) {
       const newSvg = this.state.svg;
       (newSvg as any)[key] = e.target.value;
@@ -22,18 +25,23 @@ export default class SvgCard extends React.Component<cardProps> {
     }
   };
 
-  handleChangeAnimation = (e: React.ChangeEvent<HTMLInputElement>, index: number, key: string): void => {
+  handleChangeAnimation = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number,
+    key: string
+  ): void => {
     if (e && e.target) {
       const newAnimation = this.state.svg.animations[index];
       (newAnimation as any)[key] = e.target.value;
       const newSvg = this.state.svg;
       (newSvg.animations as any)[index] = newAnimation;
       this.setState({svg: newSvg});
-      console.log(this.state.svg);
     }
   };
 
-  getHtmlCode = (defaultHtmlElement: shape | animation | null = null): string => {
+  getHtmlCode = (
+    defaultHtmlElement: shape | animation | null = null
+  ): string => {
     const htmlElement: shape | animation = defaultHtmlElement || this.state.svg;
     let props = '';
     let tag = '';
@@ -59,7 +67,10 @@ export default class SvgCard extends React.Component<cardProps> {
       }
       return '';
     });
-    const animationString = animations.reduce((acc, value) => `${acc} ${value}`, '');
+    const animationString = animations.reduce(
+      (acc, value) => `${acc} ${value}`,
+      ''
+    );
     return `<${tag} ${props}>${animationString}${content}</${tag}>`;
   };
 
@@ -95,18 +106,35 @@ export default class SvgCard extends React.Component<cardProps> {
                 this.props.svg.tag,
                 this.props.svg,
                 this.props.svg.text,
-                React.createElement(this.props.svg.animations[0].tag, this.props.svg.animations[0]),
-                React.createElement(this.props.svg.animations[1].tag, this.props.svg.animations[1]),
-                React.createElement(this.props.svg.animations[2].tag, this.props.svg.animations[2]),
-                React.createElement(this.props.svg.animations[3].tag, this.props.svg.animations[3])
+                React.createElement(
+                  this.props.svg.animations[0].tag,
+                  this.props.svg.animations[0]
+                ),
+                React.createElement(
+                  this.props.svg.animations[1].tag,
+                  this.props.svg.animations[1]
+                ),
+                React.createElement(
+                  this.props.svg.animations[2].tag,
+                  this.props.svg.animations[2]
+                ),
+                React.createElement(
+                  this.props.svg.animations[3].tag,
+                  this.props.svg.animations[3]
+                )
               )}
             </svg>
           </Card.Body>
-          <Card.Footer className='text-muted overflow-auto' style={{height: '5rem', padding: '0rem'}}>
+          <Card.Footer
+            className='text-muted overflow-auto'
+            style={{height: '5rem', padding: '0rem'}}>
             <code>{this.getHtmlCode()}</code>
           </Card.Footer>
         </Card>
-        <Card bg='light' className='overflow-auto' style={{padding: '1rem', height: '18rem'}}>
+        <Card
+          bg='light'
+          className='overflow-auto'
+          style={{padding: '1rem', height: '18rem'}}>
           <h4>Properties</h4>
           {Object.keys(this.state.svg).map((key, index) => {
             return (
@@ -114,7 +142,10 @@ export default class SvgCard extends React.Component<cardProps> {
                 <InputGroup className='mb-2' key={index}>
                   <InputGroup.Prepend>
                     <InputGroup.Text>
-                      <a href={this.getDocLinkSvg(key)} target='_blank' rel='noopener noreferrer'>
+                      <a
+                        href={this.getDocLinkSvg(key)}
+                        target='_blank'
+                        rel='noopener noreferrer'>
                         {key}
                       </a>
                     </InputGroup.Text>
@@ -131,13 +162,19 @@ export default class SvgCard extends React.Component<cardProps> {
             );
           })}
         </Card>
-        <Card bg='light' className='overflow-auto' style={{padding: '1rem', height: '18rem'}}>
+        <Card
+          bg='light'
+          className='overflow-auto'
+          style={{padding: '1rem', height: '18rem'}}>
           {this.state.svg.animations.map((_, index) =>
             Object.keys(this.state.svg.animations[index]).map(key => (
               <InputGroup className='mb-2' key={`${index}-${key}`}>
                 <InputGroup.Prepend>
                   <InputGroup.Text>
-                    <a href={this.getDocLinkAnimation(key)} target='_blank' rel='noopener noreferrer'>
+                    <a
+                      href={this.getDocLinkAnimation(key)}
+                      target='_blank'
+                      rel='noopener noreferrer'>
                       {key}
                     </a>
                   </InputGroup.Text>

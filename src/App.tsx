@@ -30,12 +30,16 @@ class App extends React.Component {
                 Faltan: image
               </Route>
               <Route path='/animations'>
-                Falta: animate (customize) animateMotion (customize) animateTransform (customize)
+                Falta: animate (customize) animateMotion (customize)
+                animateTransform (customize)
               </Route>
               <Route path='/filters'>Falta: filter (customize)</Route>
-              <Route path='/path'>Falta: path (customize) textPath (customize)</Route>
+              <Route path='/path'>
+                Falta: path (customize) textPath (customize)
+              </Route>
               <Route path='/others'>
-                Faltan: script switch use title style defs -> pattern defs -> linearGradient defs -> radialGradient
+                Faltan: script switch use title style defs -> pattern defs ->
+                linearGradient defs -> radialGradient
               </Route>
             </Switch>
           </BrowserRouter>

@@ -60,7 +60,10 @@ export default class NavMenu extends React.Component {
             </Link>
           </li>
           <div className='text-center d-none d-md-inline'>
-            <button className='rounded-circle border-0' id='sidebarToggle' onClick={this.toggleMenu}></button>
+            <button
+              className='rounded-circle border-0'
+              id='sidebarToggle'
+              onClick={this.toggleMenu}></button>
           </div>
         </ul>
       </div>
