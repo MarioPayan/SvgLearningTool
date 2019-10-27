@@ -19,26 +19,31 @@ export default class NavMenu extends React.Component {
           }`}
           id='accordionSidebar'>
           <div className='sidebar-brand d-flex align-items-center justify-content-center'>
-            <div className='sidebar-brand-icon rotate-n-15'>
-              <i className='fas fa-laugh-wink'></i>
-            </div>
             <div className='sidebar-brand-text mx-3' style={{color: 'white'}}>
               Learning SVG
             </div>
           </div>
           <hr className='sidebar-divider my-0'></hr>
-          <li className='nav-item active'>
+          <div className='sidebar-heading'>Main</div>
+          <li className='nav-item'>
             <Link to='/home' className='nav-link'>
               <span>Home</span>
             </Link>
           </li>
+          <li className='nav-item'>
+            <Link to='/documentation' className='nav-link'>
+              <span>Documentation</span>
+            </Link>
+          </li>
           <hr className='sidebar-divider'></hr>
-          <div className='sidebar-heading'>Options</div>
+          <div className='sidebar-heading'>Playground</div>
           <li className='nav-item'>
             <Link to='/shapes' className='nav-link'>
               <span>Shapes</span>
             </Link>
           </li>
+          <hr className='sidebar-divider'></hr>
+          <div className='sidebar-heading'>Examples</div>
           <li className='nav-item'>
             <Link to='/animations' className='nav-link'>
               <span>Animations</span>

@@ -1,10 +1,8 @@
 import React from 'react';
-import NavMenu from './components/NavMenu/NavMenu';
-import SvgCard from './components/index';
-import examples from './resources/exampleList';
-import './App.css';
-
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {SvgCard, NavMenu, Documentation} from './components/index';
+import examples from './resources/exampleList';
+import './App.scss';
 
 class App extends React.Component {
   render(): JSX.Element {
@@ -14,7 +12,10 @@ class App extends React.Component {
           <BrowserRouter>
             <NavMenu />
             <Switch>
-              <Route path='/home'>Falta: Documentacion</Route>
+              <Route path='/home'>Under construction</Route>
+              <Route path='/documentation'>
+                <Documentation />
+              </Route>
               <Route path='/shapes'>
                 <div id='content-wrapper' className='d-flex flex-column'>
                   <div id='content'>

@@ -31,10 +31,10 @@ export default class SvgCard extends React.Component<cardProps> {
     key: string
   ): void => {
     if (e && e.target) {
-      const newAnimation = this.state.svg.animations[index];
+      const newAnimation = Object.assign({}, this.state.svg.animations[index]);
       (newAnimation as any)[key] = e.target.value;
       const newSvg = this.state.svg;
-      (newSvg.animations as any)[index] = newAnimation;
+      newSvg.animations[index] = newAnimation;
       this.setState({svg: newSvg});
     }
   };
@@ -77,7 +77,7 @@ export default class SvgCard extends React.Component<cardProps> {
   getDocLinkSvg = (name: string): string => {
     let docLink = '';
     if (name === 'tag') {
-      docLink = `${this.docURL}/Element/${(this.state.svg as any)[name]}`;
+      docLink = `${this.docURL}/Element/${this.state.svg.tag}`;
     } else {
       const formattedName = name.replace(/([A-Z])/g, '-$1').toLowerCase();
       docLink = `${this.docURL}/Attribute/${formattedName}`;
@@ -85,10 +85,12 @@ export default class SvgCard extends React.Component<cardProps> {
     return docLink;
   };
 
-  getDocLinkAnimation = (name: string): string => {
+  getDocLinkAnimation = (name: string, index: number): string => {
     let docLink = '';
     if (name === 'tag') {
-      docLink = `${this.docURL}/Element/animate`;
+      docLink = `${this.docURL}/Element/${
+        (this.state.svg.animations as any)[index].tag
+      }`;
     } else {
       docLink = `${this.docURL}/Attribute/${name}`;
     }
@@ -172,7 +174,7 @@ export default class SvgCard extends React.Component<cardProps> {
                 <InputGroup.Prepend>
                   <InputGroup.Text>
                     <a
-                      href={this.getDocLinkAnimation(key)}
+                      href={this.getDocLinkAnimation(key, index)}
                       target='_blank'
                       rel='noopener noreferrer'>
                       {key}
