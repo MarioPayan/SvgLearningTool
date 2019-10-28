@@ -9,6 +9,11 @@ export type animation = {
   path?: string;
 };
 
+export type filter = {
+  tag: string;
+  stdDeviation?: string;
+};
+
 export type shape = {
   tag: string;
   width?: string;
@@ -54,6 +59,7 @@ export type shape = {
   visibility?: string;
   href?: string;
   animations: animation[];
+  filters: filter[];
 };
 
 const animate: animation = {
@@ -85,6 +91,7 @@ const animations = [
 export const circle: shape = {
   tag: 'circle',
   animations: Array.from(animations),
+  filters: [],
   cx: '135',
   cy: '70',
   r: '50',
@@ -96,6 +103,7 @@ export const circle: shape = {
 export const rectangle: shape = {
   tag: 'rect',
   animations: Array.from(animations),
+  filters: [],
   x: '88',
   y: '20',
   rx: '20',
@@ -112,6 +120,7 @@ export const rectangle: shape = {
 export const line: shape = {
   tag: 'line',
   animations: Array.from(animations),
+  filters: [],
   x1: '40',
   x2: '210',
   y1: '40',
@@ -124,6 +133,7 @@ export const line: shape = {
 export const ellipse: shape = {
   tag: 'ellipse',
   animations: Array.from(animations),
+  filters: [],
   cx: '135',
   cy: '70',
   rx: '100',
@@ -138,6 +148,7 @@ export const ellipse: shape = {
 export const polygon: shape = {
   tag: 'polygon',
   animations: Array.from(animations),
+  filters: [],
   points: '130,0 70,141 220,51 40,51 190,141',
   stroke: 'black',
   strokeWidth: '2',
@@ -149,6 +160,7 @@ export const polygon: shape = {
 export const polyline: shape = {
   tag: 'polyline',
   animations: Array.from(animations),
+  filters: [],
   points: '5,5 20,5 20,45 75,45 75,130 150,130 150,45 250,20',
   stroke: 'orange',
   strokeWidth: '4',
@@ -160,6 +172,7 @@ export const polyline: shape = {
 export const text: shape = {
   tag: 'text',
   animations: Array.from(animations),
+  filters: [],
   text: 'Sample text',
   x: '100',
   y: '10',
@@ -170,19 +183,11 @@ export const text: shape = {
 export const image: shape = {
   tag: 'image',
   animations: Array.from(animations),
+  filters: [],
   x: '75',
   y: '10',
   width: '150',
   height: '150',
   href:
     'https://d1.awsstatic.com/logos/customers/Alert-Logic-logo.77c92024a8f644a898189b5fe47bf846f41c5a21.png',
-};
-
-export const animation1: animation = {
-  tag: 'animate',
-  attributeName: '',
-  from: '0',
-  to: '100',
-  dur: '5s',
-  repeatCount: 'indefinite',
 };

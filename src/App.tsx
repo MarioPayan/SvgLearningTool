@@ -6,10 +6,24 @@ import {
   NavMenu,
   Introduction,
 } from './components/index';
-import {generalExamples, animationExamples} from './resources/exampleList';
+import {
+  generalExamples,
+  animationExamples,
+  filterExamples,
+} from './resources/exampleList';
 import './App.scss';
 
 class App extends React.Component {
+  bodyContent = (content: JSX.Element[]): JSX.Element => {
+    return (
+      <div id='content-wrapper' className='d-flex flex-column'>
+        <div id='content'>
+          <div className='row'>{content}</div>
+        </div>
+      </div>
+    );
+  };
+
   render(): JSX.Element {
     return (
       <div className='App'>
@@ -22,54 +36,50 @@ class App extends React.Component {
                 <Introduction />
               </Route>
               <Route path='/playground'>
-                <div id='content-wrapper' className='d-flex flex-column'>
-                  <div id='content'>
-                    <div className='row'>
-                      {generalExamples.map((example, index) => (
-                        <div className='col' key={index}>
-                          <SvgFullCard
-                            header={example.header}
-                            svg={example.svg}
-                          />
-                        </div>
-                      ))}
+                {this.bodyContent(
+                  generalExamples.map((example, index) => (
+                    <div className='col' key={index}>
+                      <SvgFullCard header={example.header} svg={example.svg} />
                     </div>
-                  </div>
-                </div>
+                  ))
+                )}
               </Route>
               <Route path='/shapes'>
-                <div id='content-wrapper' className='d-flex flex-column'>
-                  <div id='content'>
-                    <div className='row'>
-                      {generalExamples.map((example, index) => (
-                        <div className='col' key={index}>
-                          <SvgSingleCard
-                            header={example.header}
-                            svg={example.svg}
-                          />
-                        </div>
-                      ))}
+                {this.bodyContent(
+                  generalExamples.map((example, index) => (
+                    <div className='col' key={index}>
+                      <SvgSingleCard
+                        header={example.header}
+                        svg={example.svg}
+                      />
                     </div>
-                  </div>
-                </div>
+                  ))
+                )}
               </Route>
               <Route path='/animations'>
-                <div id='content-wrapper' className='d-flex flex-column'>
-                  <div id='content'>
-                    <div className='row'>
-                      {animationExamples.map((example, index) => (
-                        <div className='col' key={index}>
-                          <SvgSingleCard
-                            header={example.header}
-                            svg={example.svg}
-                          />
-                        </div>
-                      ))}
+                {this.bodyContent(
+                  animationExamples.map((example, index) => (
+                    <div className='col' key={index}>
+                      <SvgSingleCard
+                        header={example.header}
+                        svg={example.svg}
+                      />
                     </div>
-                  </div>
-                </div>
+                  ))
+                )}
               </Route>
-              <Route path='/filters'>Falta: filter (customize)</Route>
+              <Route path='/filters'>
+                {this.bodyContent(
+                  filterExamples.map((example, index) => (
+                    <div className='col' key={index}>
+                      <SvgSingleCard
+                        header={example.header}
+                        svg={example.svg}
+                      />
+                    </div>
+                  ))
+                )}
+              </Route>
               <Route path='/path'>
                 Falta: path
                 (https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths,

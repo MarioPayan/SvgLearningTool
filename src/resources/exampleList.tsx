@@ -49,6 +49,15 @@ const replaceAnimation = (
   return newShape;
 };
 
+const replaceFilter = (
+  shape: objects.shape,
+  filter: objects.filter
+): objects.shape => {
+  const newShape = Object.assign({}, shape);
+  newShape.filters = [Object.assign({}, filter)];
+  return newShape;
+};
+
 export const animationExamples: example[] = [
   {
     header: 'Animate on X',
@@ -140,6 +149,16 @@ export const animationExamples: example[] = [
       path: 'M-40,0 A120,120 -45 0,1 110 10 A120,120 -45 0,1 10,110Z',
       dur: '5s',
       repeatCount: 'indefinite',
+    }),
+  },
+];
+
+export const filterExamples: example[] = [
+  {
+    header: 'filter',
+    svg: replaceFilter(objects.rectangle, {
+      tag: 'feGaussianBlur',
+      stdDeviation: '2',
     }),
   },
 ];
