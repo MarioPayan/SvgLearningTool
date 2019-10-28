@@ -15,6 +15,14 @@ export default class SvgSingleCard extends SvgFullCard {
         <Card.Header>{this.props.header}</Card.Header>
         <Card.Body style={{padding: '0rem'}}>
           <svg width='18rem' height='9rem'>
+          {(this.props.svg as any)["filters"].length===1 && React.createElement(
+              "filter",
+              {id: (this.props.svg as any)["filters"][0].id},
+              React.createElement(
+                this.props.svg.filters[0].tag,
+                this.props.svg.filters[0]
+              )
+            )}
             {React.createElement(
               this.props.svg.tag,
               this.props.svg,

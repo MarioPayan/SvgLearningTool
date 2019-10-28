@@ -11,6 +11,7 @@ export type animation = {
 
 export type filter = {
   tag: string;
+  id: string;
   stdDeviation?: string;
 };
 

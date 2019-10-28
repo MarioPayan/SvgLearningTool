@@ -54,6 +54,7 @@ const replaceFilter = (
   filter: objects.filter
 ): objects.shape => {
   const newShape = Object.assign({}, shape);
+  newShape.filter = `url(#${filter.id})`;
   newShape.filters = [Object.assign({}, filter)];
   return newShape;
 };
@@ -142,7 +143,7 @@ export const animationExamples: example[] = [
     }),
   },
   {
-    header: 'animateMotion',
+    header: 'AnimateMotion',
     svg: replaceAnimation(objects.rectangle, {
       tag: 'animateMotion',
       attributeName: '0',
@@ -158,6 +159,7 @@ export const filterExamples: example[] = [
     header: 'filter',
     svg: replaceFilter(objects.rectangle, {
       tag: 'feGaussianBlur',
+      id: 'feGaussianBlur',
       stdDeviation: '2',
     }),
   },
