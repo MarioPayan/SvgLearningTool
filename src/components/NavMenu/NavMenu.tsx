@@ -31,19 +31,24 @@ export default class NavMenu extends React.Component {
             </Link>
           </li>
           <li className='nav-item'>
-            <Link to='/documentation' className='nav-link'>
-              <span>Documentation</span>
+            <Link to='/introduction' className='nav-link'>
+              <span>Introduction</span>
             </Link>
           </li>
           <hr className='sidebar-divider'></hr>
           <div className='sidebar-heading'>Playground</div>
           <li className='nav-item'>
-            <Link to='/shapes' className='nav-link'>
-              <span>Shapes</span>
+            <Link to='/playground' className='nav-link'>
+              <span>All together</span>
             </Link>
           </li>
           <hr className='sidebar-divider'></hr>
           <div className='sidebar-heading'>Examples</div>
+          <li className='nav-item'>
+            <Link to='/shapes' className='nav-link'>
+              <span>Shapes</span>
+            </Link>
+          </li>
           <li className='nav-item'>
             <Link to='/animations' className='nav-link'>
               <span>Animations</span>

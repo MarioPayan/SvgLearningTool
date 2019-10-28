@@ -6,6 +6,7 @@ export type animation = {
   to?: string;
   dur?: string;
   repeatCount?: string;
+  path?: string;
 };
 
 export type shape = {
@@ -51,6 +52,7 @@ export type shape = {
   transform?: string;
   vectorEffect?: string;
   visibility?: string;
+  href?: string;
   animations: animation[];
 };
 
@@ -163,4 +165,24 @@ export const text: shape = {
   y: '10',
   fill: 'red',
   transform: 'rotate(30 20,40)',
+};
+
+export const image: shape = {
+  tag: 'image',
+  animations: Array.from(animations),
+  x: '75',
+  y: '10',
+  width: '150',
+  height: '150',
+  href:
+    'https://d1.awsstatic.com/logos/customers/Alert-Logic-logo.77c92024a8f644a898189b5fe47bf846f41c5a21.png',
+};
+
+export const animation1: animation = {
+  tag: 'animate',
+  attributeName: '',
+  from: '0',
+  to: '100',
+  dur: '5s',
+  repeatCount: 'indefinite',
 };

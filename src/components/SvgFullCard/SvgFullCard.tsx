@@ -7,7 +7,7 @@ type cardProps = {
   svg: shape;
 };
 
-export default class SvgCard extends React.Component<cardProps> {
+export default class SvgFullCard extends React.Component<cardProps> {
   state = {
     svg: this.props.svg,
   };
@@ -16,10 +16,10 @@ export default class SvgCard extends React.Component<cardProps> {
 
   handleChangeSvg = (
     e: React.ChangeEvent<HTMLInputElement>,
-    key: string
+    key: keyof shape
   ): void => {
     if (e && e.target) {
-      const newSvg = this.state.svg;
+      const newSvg: shape = this.state.svg;
       (newSvg as any)[key] = e.target.value;
       this.setState({svg: newSvg});
     }
@@ -28,11 +28,11 @@ export default class SvgCard extends React.Component<cardProps> {
   handleChangeAnimation = (
     e: React.ChangeEvent<HTMLInputElement>,
     index: number,
-    key: string
+    key: keyof animation
   ): void => {
     if (e && e.target) {
       const newAnimation = Object.assign({}, this.state.svg.animations[index]);
-      (newAnimation as any)[key] = e.target.value;
+      newAnimation[key] = e.target.value;
       const newSvg = this.state.svg;
       newSvg.animations[index] = newAnimation;
       this.setState({svg: newSvg});
@@ -88,9 +88,7 @@ export default class SvgCard extends React.Component<cardProps> {
   getDocLinkAnimation = (name: string, index: number): string => {
     let docLink = '';
     if (name === 'tag') {
-      docLink = `${this.docURL}/Element/${
-        (this.state.svg.animations as any)[index].tag
-      }`;
+      docLink = `${this.docURL}/Element/${this.state.svg.animations[index].tag}`;
     } else {
       docLink = `${this.docURL}/Attribute/${name}`;
     }
@@ -155,8 +153,10 @@ export default class SvgCard extends React.Component<cardProps> {
                   <FormControl
                     disabled={key === 'tag'}
                     value={(this.state.svg as any)[key]}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                      this.handleChangeSvg(e, key);
+                    onChange={(
+                      e: React.ChangeEvent<HTMLInputElement>
+                    ): void => {
+                      this.handleChangeSvg(e, key as keyof shape);
                     }}
                   />
                 </InputGroup>
@@ -184,8 +184,12 @@ export default class SvgCard extends React.Component<cardProps> {
                 <FormControl
                   disabled={key === 'tag'}
                   value={(this.state.svg.animations[index] as any)[key]}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    this.handleChangeAnimation(e, index, key);
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>): void => {
+                    this.handleChangeAnimation(
+                      e,
+                      index,
+                      key as keyof animation
+                    );
                   }}
                 />
               </InputGroup>

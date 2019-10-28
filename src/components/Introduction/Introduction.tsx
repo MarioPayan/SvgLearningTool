@@ -1,7 +1,7 @@
 import React from 'react';
-import './Documentation.scss';
+import './Introduction.scss';
 
-export default class Documentation extends React.Component {
+export default class Introduction extends React.Component {
   render = (): JSX.Element => {
     return (
       <svg width='1100px' height='680px'>
