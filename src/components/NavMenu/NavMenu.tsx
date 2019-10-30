@@ -24,15 +24,20 @@ export default class NavMenu extends React.Component {
             </div>
           </div>
           <hr className='sidebar-divider my-0'></hr>
-          <div className='sidebar-heading'>Main</div>
+          <div className='sidebar-heading'>Documentation</div>
           <li className='nav-item'>
-            <Link to='/home' className='nav-link'>
-              <span>Home</span>
+            <Link to='/why-svg' className='nav-link'>
+              <span>Why SVG</span>
             </Link>
           </li>
           <li className='nav-item'>
-            <Link to='/introduction' className='nav-link'>
-              <span>Introduction</span>
+            <Link to='/what-is-svg' className='nav-link'>
+              <span>What is SVG</span>
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link to='/path' className='nav-link'>
+              <span>Path</span>
             </Link>
           </li>
           <hr className='sidebar-divider'></hr>
@@ -60,7 +65,7 @@ export default class NavMenu extends React.Component {
             </Link>
           </li>
           <li className='nav-item'>
-            <Link to='/path' className='nav-link'>
+            <Link to='/path-example' className='nav-link'>
               <span>Path</span>
             </Link>
           </li>

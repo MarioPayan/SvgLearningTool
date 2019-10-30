@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, InputGroup, FormControl, CardGroup} from 'react-bootstrap';
-import {shape, animation} from '../../resources/objects';
+import {shape, animation, filter} from '../../resources/objects';
 
 type cardProps = {
   header: string;
@@ -40,12 +40,14 @@ export default class SvgFullCard extends React.Component<cardProps> {
   };
 
   getHtmlCode = (
-    defaultHtmlElement: shape | animation | null = null
+    defaultHtmlElement: shape | animation | filter | null = null
   ): string => {
-    const htmlElement: shape | animation = defaultHtmlElement || this.state.svg;
+    const htmlElement: shape | animation | filter =
+      defaultHtmlElement || this.state.svg;
     let props = '';
     let tag = '';
     let content = '';
+    let filter = '';
     const animations: string[] = [];
     Object.keys(htmlElement).map((key: string) => {
       if (key === 'tag') {
@@ -58,6 +60,14 @@ export default class SvgFullCard extends React.Component<cardProps> {
             animations.push(this.getHtmlCode(animation));
           }
         });
+      } else if (key === 'filters') {
+        const tmpFilter = (htmlElement as shape).filters[0];
+        if (tmpFilter) {
+          filter = `<filter id=${tmpFilter.id}>${this.getHtmlCode(
+            tmpFilter
+          )}</filter>`;
+        }
+      } else if (key === 'id') {
       } else {
         const value = (htmlElement as any)[key];
         if (value) {
@@ -71,7 +81,7 @@ export default class SvgFullCard extends React.Component<cardProps> {
       (acc, value) => `${acc} ${value}`,
       ''
     );
-    return `<${tag} ${props}>${animationString}${content}</${tag}>`;
+    return `${filter} <${tag} ${props}>${animationString}${content}</${tag}>`;
   };
 
   getDocLinkSvg = (name: string): string => {
@@ -135,7 +145,6 @@ export default class SvgFullCard extends React.Component<cardProps> {
           bg='light'
           className='overflow-auto'
           style={{padding: '1rem', height: '18rem'}}>
-          <h4>Properties</h4>
           {Object.keys(this.state.svg).map((key, index) => {
             return (
               key !== 'animations' && (

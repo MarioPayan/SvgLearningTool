@@ -4,7 +4,11 @@ import {
   SvgFullCard,
   SvgSingleCard,
   NavMenu,
-  Introduction,
+  WhatIsSvg,
+  WhySvg,
+  Path,
+  PathExample,
+  Others,
 } from './components/index';
 import {
   generalExamples,
@@ -31,9 +35,11 @@ class App extends React.Component {
           <BrowserRouter>
             <NavMenu />
             <Switch>
-              <Route path='/home'>Under construction</Route>
-              <Route path='/introduction'>
-                <Introduction />
+              <Route path='/why-svg'>
+                <WhySvg />
+              </Route>
+              <Route path='/what-is-svg'>
+                <WhatIsSvg />
               </Route>
               <Route path='/playground'>
                 {this.bodyContent(
@@ -81,14 +87,13 @@ class App extends React.Component {
                 )}
               </Route>
               <Route path='/path'>
-                Falta: path
-                (https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths,
-                https://www.w3schools.com/graphics/svg_path.asp), textPath
-                (customize), g
+                <Path />
+              </Route>
+              <Route path='/path-example'>
+                <PathExample />
               </Route>
               <Route path='/others'>
-                Faltan: script, switch, use, title, style, defs/pattern,
-                defs/linearGradient, defs/radialGradient
+                <Others />
               </Route>
             </Switch>
           </BrowserRouter>

@@ -12,7 +12,24 @@ export type animation = {
 export type filter = {
   tag: string;
   id: string;
+  x?: string;
+  y?: string;
+  dx?: string;
+  dy?: string;
+  width?: string;
+  height?: string;
   stdDeviation?: string;
+  type?: string;
+  baseFrequency?: string;
+  numOctaves?: string;
+  result?: string;
+  in?: string;
+  in2?: string;
+  scale?: string;
+  xChannelSelector?: string;
+  yChannelSelector?: string;
+  operator?: string;
+  radius?: string;
 };
 
 export type shape = {

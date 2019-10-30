@@ -156,11 +156,71 @@ export const animationExamples: example[] = [
 
 export const filterExamples: example[] = [
   {
-    header: 'filter',
+    header: 'Filter (feGaussianBlur)',
     svg: replaceFilter(objects.rectangle, {
       tag: 'feGaussianBlur',
       id: 'feGaussianBlur',
       stdDeviation: '2',
+    }),
+  },
+  {
+    header: 'Filter (feTurbulence)',
+    svg: replaceFilter(objects.rectangle, {
+      tag: 'feTurbulence',
+      id: 'feTurbulence',
+      type: 'turbulence',
+      baseFrequency: '0.09',
+      numOctaves: '3',
+    }),
+  },
+  {
+    header: 'Filter (feDisplacementMap)',
+    svg: replaceFilter(objects.rectangle, {
+      tag: 'feDisplacementMap',
+      id: 'feDisplacementMap',
+      scale: '50',
+      xChannelSelector: 'B',
+      yChannelSelector: 'R',
+    }),
+  },
+  {
+    header: 'Filter (feTile)',
+    svg: replaceFilter(objects.rectangle, {
+      tag: 'feTile',
+      id: 'feTile',
+      in: 'SourceGraphic',
+      x: '50',
+      y: '50',
+      width: '100',
+      height: '100',
+    }),
+  },
+  {
+    header: 'Filter (feOffset)',
+    svg: replaceFilter(objects.rectangle, {
+      tag: 'feOffset',
+      id: 'feOffset',
+      in: 'SourceGraphic',
+      dx: '50',
+      dy: '50',
+    }),
+  },
+  {
+    header: 'Filter (feMorphology)',
+    svg: replaceFilter(objects.rectangle, {
+      tag: 'feMorphology',
+      id: 'feMorphology1',
+      operator: 'erode',
+      radius: '2',
+    }),
+  },
+  {
+    header: 'Filter (feMorphology)',
+    svg: replaceFilter(objects.rectangle, {
+      tag: 'feMorphology',
+      id: 'feMorphology2',
+      operator: 'dilate',
+      radius: '2',
     }),
   },
 ];
